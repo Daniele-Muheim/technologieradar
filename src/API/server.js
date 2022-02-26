@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const authController = require("./controllers/authController.js");
 const technologieController = require("./controllers/technologieController.js");
+const { CONNECTION_STRING } = require('./env.example');
 
 var corsOptions = {
     origin: 'http://localhost:4200',
@@ -13,7 +14,7 @@ var corsOptions = {
 server.use(cors(corsOptions));
 server.use(bodyParser.json());
 
-mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log('connected')
 }).catch(err => console.log(err))
 
