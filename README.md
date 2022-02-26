@@ -8,6 +8,7 @@ Run `ng serve` for a Frontend Angular APp. Navigate to `http://localhost:4200/`.
 
 ## Start Backend
 
+Move to path `src/API`
 Run `npm run server` for a node.js backend server. Navigate to `http://localhost:4566/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding

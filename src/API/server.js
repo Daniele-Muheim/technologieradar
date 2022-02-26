@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const authController = require("./controllers/authController.js");
 const technologieController = require("./controllers/technologieController.js");
+require('dotenv').config()
 
 var corsOptions = {
     origin: 'http://localhost:4200',
@@ -13,9 +14,8 @@ var corsOptions = {
 server.use(cors(corsOptions));
 server.use(bodyParser.json());
 
-const connectionString = "mongodb+srv://admin:admin123@cluster0.b6gnt.mongodb.net/techrader?retryWrites=true&w=majority";
-
-mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+console.log(process.env);
+mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
     console.log('connected')
 }).catch(err => console.log(err))
 
