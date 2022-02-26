@@ -1,0 +1,96 @@
+<div class="component" fxLayout="row wrap" fxLayoutAlign="space-around center center">
+    <div fxFlex="30" fxFlex="100%" fxFlex.gt-sm="30%">
+        <mat-card fxLayout="column">
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-title>Edit a technology</mat-card-title>
+            </mat-card-header>
+            <form [formGroup]="editTechnologieForm" (ngSubmit)="editTechnologie()">
+                <mat-form-field appearance="outline" fxLayout="column">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName="name" class="form-control">
+                    <div *ngIf="editTechnologieFormControls['name'].touched && editTechnologieFormControls['name'].invalid"
+                        class="invalid-feedback">
+                        <div
+                            *ngIf="editTechnologieFormControls['name'].errors &&  editTechnologieFormControls['name'].errors['required']">
+                            Name is required</div>
+                        <div
+                            *ngIf="editTechnologieFormControls['name'].errors &&  editTechnologieFormControls['name'].errors['minlength']">
+                            Name must be at least 3 characters long.
+                        </div>
+                    </div>
+                </mat-form-field>
+                <p>
+                    <mat-form-field appearance="outline" fxLayout="column" class="form-control">
+                        <mat-label>Kategorie</mat-label>
+                        <select matNativeControl required formControlName="category">
+                            <option value="">-- Please choose a category --</option>
+                            <option [ngValue]="category" *ngFor="let category of categories">
+                                {{category}}
+                            </option>
+                        </select>
+                        <div *ngIf="editTechnologieFormControls['category'].touched && editTechnologieFormControls['category'].invalid"
+                            class="invalid-feedback">
+                            <div
+                                *ngIf="editTechnologieFormControls['category'].errors &&  editTechnologieFormControls['category'].errors['required']">
+                                Category is required</div>
+                        </div>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="outline" fxLayout="column" class="form-control">
+                        <mat-label>Ring</mat-label>
+                        <select matNativeControl formControlName="ring">
+                            <option value="">-- Please choose a ring --</option>
+                            <option [ngValue]="ring.name" *ngFor="let ring of rings">
+                                {{ring.name}}
+                            </option>
+                        </select>
+                    </mat-form-field>
+                </p>
+                <mat-form-field appearance="outline" fxLayout="column">
+                    <mat-label>Beschreibung Technologie </mat-label>
+                    <textarea matInput formControlName="description" placeholder="description">
+             </textarea>
+                    <div *ngIf="editTechnologieFormControls['description'].touched && editTechnologieFormControls['description'].invalid"
+                        class="invalid-feedback">
+                        <div
+                            *ngIf="editTechnologieFormControls['description'].errors &&  editTechnologieFormControls['description'].errors['required']">
+                            Description is required</div>
+                    </div>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxLayout="column">
+                    <mat-label>Beschreibung der Einordnung</mat-label>
+                    <textarea matInput formControlName="descriptionClassification"
+                        placeholder="Beschreibung der Einordnung">
+             </textarea>
+                </mat-form-field>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary" [disabled]="editTechnologieForm.invalid">Save
+                        technology</button>
+                </mat-card-actions>
+                <p *ngIf="submitted">
+                    Daten erfolgreich hinzugefügt
+                </p>
+            </form>
+
+        </mat-card>
+
+        <div>
+            <mat-card class="content" fxLayout="column">
+                <mat-card-content>
+                    <mat-card-header fxLayoutAlign="center center">
+                        <mat-card-title>Change history</mat-card-title>
+                    </mat-card-header>
+                    <mat-list *ngFor="let history of changeHistory.reverse()">
+                        <mat-list-item>
+                            <div><span>Author: </span>{{history?.author}}</div>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <div><span>Time: </span>{{history?.changeDate}}</div>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

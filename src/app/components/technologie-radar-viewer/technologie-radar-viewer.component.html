@@ -1,0 +1,25 @@
+<div class="component">
+    <div fxLayout="row wrap" fxLayoutAlign="space-around">
+        <div fxFlex="100%" fxFlex.gt-md="48%" *ngFor="let category of categories; let categoryID = index">
+            <mat-card class="content">
+                <mat-card-header>
+                    <mat-card-title>{{category}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list *ngFor="let ring of rings">
+                        <mat-chip-list>
+                            <mat-chip color={{ring.color}} selected>{{ring.name}}</mat-chip>
+                        </mat-chip-list>
+                        <div *ngFor="let technologie of technologies;">
+                            <div *ngIf="technologie.status" >
+                                <mat-list-item *ngIf="isTechnologie(technologie, ring, category)"
+                                    routerLink="/detail/{{technologie._id}}">{{technologie.name}}
+                                </mat-list-item>
+                            </div>
+                        </div>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="component">
+    <mat-card fxLayout="column" fxFlex="100" fxFlex.gt-sm="30%">
+        <mat-card-header>
+            <mat-card-title class="title-center">Login</mat-card-title>
+        </mat-card-header>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+            <mat-form-field appearance="outline" fxLayout="column">
+                <mat-label>Email</mat-label>
+                <input matInput type="text" formControlName="email" class="form-control">
+                <mat-icon matSuffix>email</mat-icon>
+                <div *ngIf="loginControls['email'].touched && loginControls['email'].invalid" class="invalid-feedback">
+                    <div *ngIf="loginControls['email'].errors &&  loginControls['email'].errors['required']">Email is required</div>
+                    <div *ngIf="loginControls['email'].errors && loginControls['email'].errors['email']">Please, enter valid email address.</div>
+                </div>
+            </mat-form-field>
+            <p>
+                <mat-form-field appearance="outline" fxLayout="column" fxFlex>
+                    <mat-label> Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                    <mat-icon matSuffix>vpn_key</mat-icon>
+                    <div *ngIf="loginControls['password'].touched && loginControls['password'].invalid" class="invalid-feedback">
+                        <div *ngIf="loginControls['password'].errors &&  loginControls['password'].errors['required']">Password is required</div>
+                    </div>
+                </mat-form-field>
+            </p>
+            <mat-card-actions align="end">
+                <button mat-button type="submit" color="primary" [disabled]="loginForm.invalid">Login</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>

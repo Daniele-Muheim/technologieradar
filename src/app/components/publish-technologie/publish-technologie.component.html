@@ -1,0 +1,63 @@
+<div class="component" fxLayout="row wrap" fxLayoutAlign="space-around center center">
+    <div fxFlex="30" fxFlex="100%" fxFlex.gt-sm="30%">
+        <mat-card class="content" fxLayout="column">
+            <div *ngIf="technologies.length == 0">
+                Keine Technologie zum publizieren vorhanden.
+            </div>
+            <div *ngFor="let technologie of technologies;">
+                <mat-list-item>Name: {{technologie.name}}</mat-list-item>
+                <mat-chip-list>
+                    <mat-chip disabled>{{technologie.ring}}</mat-chip>
+                </mat-chip-list>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary" (click)="getTechnologieById(technologie._id!)">Technology auswählen</button>
+                </mat-card-actions>
+            </div>
+        </mat-card>
+        <mat-card class="content" fxLayout="column" *ngIf="technologieSelcted">
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-title>Publish a new technology</mat-card-title>
+            </mat-card-header>
+            <form [formGroup]="publishTechnologieForm" (ngSubmit)="publishTechnologie()">
+                <mat-form-field appearance="outline" fxLayout="column">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" class="form-control" formControlName="name">
+                </mat-form-field>
+                <p>
+                    <mat-form-field appearance="outline" fxLayout="column" class="form-control">
+                        <mat-label>Ring</mat-label>
+                        <select matNativeControl required formControlName="ring">
+                            <option value="">-- Please choose a ring --</option>
+                            <option [ngValue]="ring.name" *ngFor="let ring of rings">
+                                {{ring.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="publishTechnologieFormControls['ring'].touched && publishTechnologieFormControls['ring'].invalid"
+                            class="invalid-ring">
+                            <div
+                                *ngIf="publishTechnologieFormControls['ring'].errors &&  publishTechnologieFormControls['ring'].errors['required']">
+                                Ring is required</div>
+                        </div>
+                    </mat-form-field>
+                </p>
+                <mat-form-field appearance="outline" fxLayout="column">
+                    <mat-label>Beschreibung der Einordnung</mat-label>
+                    <textarea matInput formControlName="descriptionClassification"
+                        placeholder="Beschreibung der Einordnung" required></textarea>
+                    <div *ngIf="publishTechnologieFormControls['descriptionClassification'].touched && publishTechnologieFormControls['descriptionClassification'].invalid"
+                        class="invalid-feedback">
+                        <div
+                            *ngIf="publishTechnologieFormControls['descriptionClassification'].errors &&  publishTechnologieFormControls['descriptionClassification'].errors['required']">
+                            Beschreibung der Einordnung ist notwendig</div>
+                    </div>
+                </mat-form-field>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary" [disabled]="publishTechnologieForm.invalid">Publish technology</button>
+                </mat-card-actions>
+                <p *ngIf="submitted">
+                    Daten erfolgreich publiziert
+                </p>
+            </form>
+        </mat-card>
+    </div>
+</div>
