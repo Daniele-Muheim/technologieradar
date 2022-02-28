@@ -1,6 +1,6 @@
 <div class="component">
     <div fxLayout="row wrap" fxLayoutAlign="space-around">
-        <div fxFlex="100%" fxFlex.gt-md="100%">
+        <div fxFlex="100%" fxFlex.gt-md="30%">
             <mat-card>
                 <mat-card-content>
                     <mat-card-header fxLayoutAlign="center center">
@@ -8,23 +8,17 @@
                     </mat-card-header>
                     <mat-list>
                         <div *ngIf="technologie?.status">
-                            <mat-list-item>
-                                <div><span>Category: </span>{{technologie?.category}}</div>
-                            </mat-list-item>
-                            <mat-list-item>
-                                <div><span>Ring: </span>{{technologie?.ring}}</div>
-                            </mat-list-item>
-                            <mat-list-item>
-                                <div><span>Beschreibung Technologie: </span>{{technologie?.description}}</div>
-                            </mat-list-item>
-                            <mat-list-item>
-                                <div><span>Beschreibung der Einordnung: </span>{{technologie?.descriptionClassification}}</div>
-                            </mat-list-item>
+                            <div><span><b>Category: </b></span>{{technologie?.category}}</div>
+                            <div><span><b>Ring: </b></span>{{technologie?.ring}}</div>
+                            <span><b>Beschreibung Technologie: </b></span><div>{{technologie?.description}}</div>
+                           <span><b>Beschreibung der Einordnung: </b></span> <div>{{technologie?.descriptionClassification}}</div>
                         </div>
                     </mat-list>
                     <mat-card-actions fxLayoutAlign="center center">
-                        <button mat-raised-button color="warn" (click)="deleteTechnologie(technologie)">Delete technology</button>
-                        <button mat-raised-button color="primary"  routerLink="/admin-dashboard/{{technologie?._id}}">Edit technology</button>
+                        <button mat-raised-button color="warn" (click)="deleteTechnologie(technologie)">Delete
+                            technology</button>
+                        <button mat-raised-button color="primary"
+                            routerLink="/admin-dashboard/{{technologie?._id}}">Edit technology</button>
                     </mat-card-actions>
                 </mat-card-content>
             </mat-card>

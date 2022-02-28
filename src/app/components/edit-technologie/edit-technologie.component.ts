@@ -77,7 +77,6 @@ export class EditTechnologieComponent implements OnInit {
       }]
     }
 
-
     const editTechnologie: Technologie = {
       name: this.editTechnologieForm.value.name,
       category: this.editTechnologieForm.value.category,
