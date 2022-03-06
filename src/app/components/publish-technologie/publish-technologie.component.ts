@@ -25,7 +25,7 @@ export class PublishTechnologieComponent implements OnInit {
     { name: 'Hold', color: 'warn' }
   ]
 
-  constructor(private formBuilder: FormBuilder, private technologyService: TechnologyService, private tokenService: TokenService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private technologyService: TechnologyService, private router: Router) {
     this.publishTechnologieForm = this.formBuilder.group({
       name: [''],
       ring: ['', Validators.required],

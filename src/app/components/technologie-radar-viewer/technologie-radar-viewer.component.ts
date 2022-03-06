@@ -40,8 +40,4 @@ export class TechnologieRadarViewerComponent implements OnInit {
         }
       });
   }
-
-  isTechnologie(technologie: any, ring: any, category: any) {
-    return technologie.category == category && technologie.ring == ring.name;
-  }
 }

@@ -34,6 +34,7 @@ import { AuthGuard } from './services/auth.guard';
 import { RoleGuard } from './services/role.guard';
 import { TokenService } from './services/token.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AdminDashboardComponent,
     PublishTechnologieComponent,
     TechnologieDetailComponent,
-    EditTechnologieComponent
+    EditTechnologieComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -10,10 +10,9 @@
                         <mat-chip-list>
                             <mat-chip color={{ring.color}} selected>{{ring.name}}</mat-chip>
                         </mat-chip-list>
-                        <div *ngFor="let technologie of technologies;">
-                            <div *ngIf="technologie.status" >
-                                <mat-list-item *ngIf="isTechnologie(technologie, ring, category)"
-                                    routerLink="/detail/{{technologie._id}}">{{technologie.name}}
+                        <div *ngFor="let technologie of (technologies | filterPipe:ring.name:category)">
+                            <div *ngIf="technologie.status">
+                                <mat-list-item routerLink="/detail/{{technologie._id}}">{{technologie.name}}
                                 </mat-list-item>
                             </div>
                         </div>
