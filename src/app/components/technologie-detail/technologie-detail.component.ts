@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TechnologyService } from 'src/app/services/technology.service';
+import { TokenService } from 'src/app/services/token.service';
 import { Technologie } from '../models/Technologies';
 
 @Component({
@@ -12,7 +13,7 @@ import { Technologie } from '../models/Technologies';
 export class TechnologieDetailComponent implements OnInit {
   technologie?: Technologie;
 
-  constructor(private route: ActivatedRoute, private technologieService: TechnologyService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private technologieService: TechnologyService, private router: Router, public tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.getTechnologie();

@@ -15,10 +15,10 @@
                         </div>
                     </mat-list>
                     <mat-card-actions fxLayoutAlign="center center">
-                        <button mat-raised-button color="warn" (click)="deleteTechnologie(technologie)">Delete
+                        <button mat-raised-button color="warn" (click)="deleteTechnologie(technologie)" *ngIf="this.tokenService.getUserRoleAdmin()">Delete
                             technology</button>
                         <button mat-raised-button color="primary"
-                            routerLink="/admin-dashboard/{{technologie?._id}}">Edit technology</button>
+                            routerLink="/admin-dashboard/{{technologie?._id}}" *ngIf="this.tokenService.getUserRoleAdmin()">Edit technology</button>
                     </mat-card-actions>
                 </mat-card-content>
             </mat-card>
