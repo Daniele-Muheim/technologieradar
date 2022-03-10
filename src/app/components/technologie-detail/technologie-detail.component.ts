@@ -47,8 +47,4 @@ export class TechnologieDetailComponent implements OnInit {
       }
     });
   }
-
-  editTechnologie(id: number) {
-
-  }
 }
