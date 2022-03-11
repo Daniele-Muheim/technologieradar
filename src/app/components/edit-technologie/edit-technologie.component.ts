@@ -54,7 +54,7 @@ export class EditTechnologieComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.technologyService.getTechnologiesByID(this.id?.toString())
       .subscribe(technologieByID => {
-        console.log(technologieByID);
+        this.technologie = technologieByID
         this.changeHistory = technologieByID.history
         this.editTechnologieForm.patchValue(technologieByID)
       });
